@@ -24,7 +24,7 @@
 <meta property="og:description" content="公司有多个前端项目，每个项目独立部署，各个项目里可能会使用相同的组件或者页面。对于这样的组件或者页面如何管理呢？我们可以把公共的组件或者页面抽离，单独存放在一个项目里，然后在其他项目里引入这个公共的项目">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-08-07T05:12:50.000Z">
-<meta property="article:modified_time" content="2022-08-07T08:30:11.313Z">
+<meta property="article:modified_time" content="2022-08-07T08:32:26.155Z">
 <meta property="article:author" content="huangyue">
 <meta property="article:tag" content="多个前端项目">
 <meta property="article:tag" content="npm包">
@@ -285,12 +285,14 @@
 <p>这会创建一个软连接，并保存到目录C:\Users\Administrator\AppData\Roaming\npm\node_modules下面。<br>然后进入packageone和packagetwo，在控制台输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm <span class="hljs-built_in">link</span> commonpack<br></code></pre></td></tr></table></figure>
 <p>这就将这个公共的项目通过软连接的方式引入到项目里面来了。下图可以看到在node_modules中common包和其他的包文件夹样式是不一样的，common文件夹只是一个软链接。</p>
+<p>image.png</p>
 <p>这时修改commonpack项目下面的任意代码都会实时生效，不用打包，不用更新引入包，也不用重启。<br>需要注意的是，当项目包依赖更新后，也就是执行了 npm install xxx 之后，需要重新link common项目。而且使用npm link后本地package.json里没有记录，无法直观的查看本地包的引用。</p>
 <h6 id="方案三：npm本地file引用（推荐）"><a href="#方案三：npm本地file引用（推荐）" class="headerlink" title="方案三：npm本地file引用（推荐）"></a>方案三：npm本地file引用（推荐）</h6><p>分别进入packageone和packagetwo，在控制台输入命令：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">npm install ..<span class="hljs-regexp">/commonpack/</span><br></code></pre></td></tr></table></figure>
 <p>其中&#x2F;commonpack&#x2F;是commonpack的相对路径，这里也可以输入绝对路径。<br>这样就将commonpack这个工程以node_module的方式引入到packageone和packagetwo项目中了。可以正常使用commonpack在index.js中导出的组件了。<br>命令执行完后，package.json里会多一条记录</p>
-<p>同样这时修改common项目下面的任意代码都会实时生效，不用打包，不用更新引入包，也不用重启。而且在package.json中有引入记录。</p>
+<p>image.png<br>同样这时修改common项目下面的任意代码都会实时生效，不用打包，不用更新引入包，也不用重启。而且在package.json中有引入记录。</p>
 <h6 id="3、举例"><a href="#3、举例" class="headerlink" title="3、举例"></a>3、举例</h6><p>我们在packageone项目里引入公共组件pageA和pageB</p>
+<p>image.png</p>
 <h6 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h6><p>image.png<br>github项目地址：<a target="_blank" rel="noopener" href="https://github.com/Amosyue/npmPackages">https://github.com/Amosyue/npmPackages</a></p>
 
                 
