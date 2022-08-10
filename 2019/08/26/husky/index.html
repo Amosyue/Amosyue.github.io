@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/2019/08/26/husky/commit4.webp">
 <meta property="og:image" content="http://example.com/2019/08/26/husky/commit5.webp">
 <meta property="article:published_time" content="2019-08-26T13:30:20.000Z">
-<meta property="article:modified_time" content="2022-08-10T14:13:30.426Z">
+<meta property="article:modified_time" content="2022-08-10T14:19:12.910Z">
 <meta property="article:author" content="huangyue">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="eslint">
@@ -283,10 +283,10 @@
 <p>开发过程中为了统一团队编码规范，会用 Eslint 去检查和自动修复 js 代码。但是代码规范检查不通过，还是可以提交 commit 记录的，这显然是有问题的， 还好 git hook 提供了很多钩子函数绑定在 git 各个命令上，这样就可以把 eslint 代码检查放在 pre-commit hook 中， 这样如果eslint 检查不通过就不让提交了。</p>
 </blockquote>
 <h2 id="1、Git-hooks（git钩子）"><a href="#1、Git-hooks（git钩子）" class="headerlink" title="1、Git hooks（git钩子）"></a>1、Git hooks（git钩子）</h2><p>默认情况下项目中 .git&#x2F;hooks（.git文件夹下的hooks文件夹） 中已经内置了很多 hook，比如 pre-commit。如下图：</p>
-<p><img src="/2019/08/26/husky/hook.webp" srcset="/img/loading.gif" lazyload alt="项目结构"><br>这些hooks文件夹下有很多git默认自带的钩子文件，这里我们主要使用pre-commit这个钩子文件。<br>我们找到.git&#x2F;hooks&#x2F;pre-commit文件，修改当前文件里的内容为：</p>
+<p><img src="/2019/08/26/husky/hook.webp" srcset="/img/loading.gif" lazyload alt="pre-commit"><br>这些hooks文件夹下有很多git默认自带的钩子文件，这里我们主要使用pre-commit这个钩子文件。<br>我们找到.git&#x2F;hooks&#x2F;pre-commit文件，修改当前文件里的内容为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;我是测试pre-commit钩子命令的&#x27;</span><br></code></pre></td></tr></table></figure>
 <p>然后在git 面板里执行git commit 命令，可以看到我们在执行git commit 命令时候触发了pre-commit钩子，输出了：’我是测试pre-commit钩子命令的’。如下图</p>
-<p><img src="/2019/08/26/husky/commit.webp" srcset="/img/loading.gif" lazyload alt="项目结构"><br>我们在.git&#x2F;hooks&#x2F;pre-commit文件里执行了输出一行字，那如果我们修改当然文件，让文件执行eslint校验，如下图<br><img src="/2019/08/26/husky/commit2.webp" srcset="/img/loading.gif" lazyload alt="项目结构"></p>
+<p><img src="/2019/08/26/husky/commit.webp" srcset="/img/loading.gif" lazyload alt="hook/pre-commit"><br>我们在.git&#x2F;hooks&#x2F;pre-commit文件里执行了输出一行字，那如果我们修改当然文件，让文件执行eslint校验，如下图<br><img src="/2019/08/26/husky/commit2.webp" srcset="/img/loading.gif" lazyload alt="执行eslint校验"></p>
 <p>注意.git&#x2F;hooks&#x2F;pre-commit文件里写 npm run eslint 那么一定要在package.json文件里添加如下代码：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>  <span class="hljs-string">&quot;eslint&quot;</span>: <span class="hljs-string">&quot;eslint --ext .js,.vue zdyProject/&quot;</span> <span class="hljs-regexp">//</span>注意这个zdyProject/是我测试的文件目录，请根据自己代码自行修改<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>到这里基本就完成了git提交时执行eslint校验功能了。但是在实际的团队项目里我们并不会这样做，因为我们是团队合作，.git&#x2F;hooks&#x2F;pre-commit文件修改后只会在本地，并不能上传到git上供其它成员使用，因为git会忽略.git文件夹下的文件。这个时候husky就可以解决这个问题。</p>
@@ -295,15 +295,15 @@
 <h6 id="2-2、使用husky"><a href="#2-2、使用husky" class="headerlink" title="2.2、使用husky"></a>2.2、使用husky</h6><p>编辑package.json在script里添加prepare的值为husky install</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;prepare&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;husky install&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
 <p>然后执行npm run prepare，这个命令做了什么事呢 ？实际上就是创建 .husky 目录，修改了.git&#x2F;config文件里的hooksPath字段（设置 .husky 目录为 git hooks 目录）</p>
-<p><img src="/2019/08/26/husky/commit3.webp" srcset="/img/loading.gif" lazyload alt="项目结构"></p>
+<p><img src="/2019/08/26/husky/commit3.webp" srcset="/img/loading.gif" lazyload alt="eslint"></p>
 <p>我们在.husky目录下创建一个pre-commit文件，里面放入代码 npm run eslint(如下图a)。</p>
-<p>我们随便修改一下项目里的文件，然后执行git add .，git commit -m ‘测试husky’，发现代码已经被拦截，没有提交，因为index.vue代码不符合规范(效果如下图a)。<br><img src="/2019/08/26/husky/commit4.webp" srcset="/img/loading.gif" lazyload alt="项目结构"><br>到这里husky的简单配置已经完成，但是试想一下有没有问题？，假如项目里有a.js，b.js文件，我修改了a.js，b.js文件，但是我执行了git add a.js(也就是只把a.js文件提到了git缓存)，那如果我们现在git commit 应该也只应该校验a.js才对，但是按照上面的配置，我们会在git commit的时候会校验的项目下的全部文件，这显然不对，也就是我们.husky目录下的pre-commit文件内容显然是不能够做到这样的，这时候就必须改写pre-commit文件内容，pre-commit文件是一个shell文件，对前端而言肯定是一大难题，不好写。这个时候就要用到lint-staged，用它来解决这个问题。</p>
+<p>我们随便修改一下项目里的文件，然后执行git add .，git commit -m ‘测试husky’，发现代码已经被拦截，没有提交，因为index.vue代码不符合规范(效果如下图a)。<br><img src="/2019/08/26/husky/commit4.webp" srcset="/img/loading.gif" lazyload alt="效果"><br>到这里husky的简单配置已经完成，但是试想一下有没有问题？，假如项目里有a.js，b.js文件，我修改了a.js，b.js文件，但是我执行了git add a.js(也就是只把a.js文件提到了git缓存)，那如果我们现在git commit 应该也只应该校验a.js才对，但是按照上面的配置，我们会在git commit的时候会校验的项目下的全部文件，这显然不对，也就是我们.husky目录下的pre-commit文件内容显然是不能够做到这样的，这时候就必须改写pre-commit文件内容，pre-commit文件是一个shell文件，对前端而言肯定是一大难题，不好写。这个时候就要用到lint-staged，用它来解决这个问题。</p>
 <h6 id="3、lint-staged"><a href="#3、lint-staged" class="headerlink" title="3、lint-staged"></a>3、lint-staged</h6><p>lint-staged作用：对 Git 暂存区代码文件进行 bash 命令操作等等。<br>先安装</p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> i lint-staged -D<br></code></pre></td></tr></table></figure>
 <p>package.json添加script</p>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>  <span class="hljs-string">&quot;eslint&quot;</span>: <span class="hljs-string">&quot;lint-staged&quot;</span><br>&#125;,<br><span class="hljs-string">&quot;lint-staged&quot;</span>: &#123;<br>    <span class="hljs-string">&quot;*.&#123;js,vue&#125;&quot;</span>: [<br>      <span class="hljs-string">&quot;prettier --write&quot;</span>,<br>      <span class="hljs-string">&quot;eslint --ext .js,.vue&quot;</span><br>    ]<br>  &#125;<br></code></pre></td></tr></table></figure>
 <p>随便修改一下项目里a.js，b.js文件，然后执行git add a.js，git commit -m ‘test’，可以发现调用了 eslint 去检查代码，eslint只检查了a.js文件，并没有校验b.js文件。检查不通过就退出commit。如下图b</p>
-<p><img src="/2019/08/26/husky/commit5.webp" srcset="/img/loading.gif" lazyload alt="项目结构"></p>
+<p><img src="/2019/08/26/husky/commit5.webp" srcset="/img/loading.gif" lazyload alt="效果"></p>
 
                 
               </div>
