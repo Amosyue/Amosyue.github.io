@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2020/03/02/settimeout/1.2.png">
 <meta property="og:image" content="http://example.com/2020/03/02/settimeout/1.1.png">
 <meta property="article:published_time" content="2020-03-02T14:59:50.000Z">
-<meta property="article:modified_time" content="2022-08-27T08:47:35.584Z">
+<meta property="article:modified_time" content="2022-08-27T10:02:30.051Z">
 <meta property="article:author" content="huangyue">
 <meta property="article:tag" content="深入setTimeout">
 <meta property="article:tag" content="setInterval">
@@ -298,7 +298,8 @@
 
 <h2 id="7、弊端"><a href="#7、弊端" class="headerlink" title="7、弊端"></a>7、弊端</h2><p>1、setTimeout 会引发内存泄漏（内层函数私有作用域不会销毁）， 所以在实现动画效果时，尽量用CSS3做动画。setTimeout 使用完后要使用 clearTimeout 清除掉。<br>2、每一个 setTimeout 都是在增加一个新的 JavaScript 任务，会影响浏览器主线程（main thread)的，会造成一定程度达到卡机。<br>3、如果是在写测试的话，用setTimeout 会导致你的测试不稳定（flaky)。</p>
 <h2 id="8、其它"><a href="#8、其它" class="headerlink" title="8、其它"></a>8、其它</h2><p>setTimeout()、setInterval() 允许传入一个JS代码字符串并执行，然而在JS代码中执行另一段JS代码时，代码首先会以正常的方式求值，然后在执行过程中对包含于字符串中的代码发起另一个求值运算，从而造成双重求值。它比直接包含的代码执行速度慢很多，原因在于， 每次调用setTimeout()、setInterval() 都会创建一个新的解释器&#x2F;编译器实例。这必然使得代码执行速度变慢，效率降低，从而造成性能的浪费。所以建议传入函数而不是字符串来作为第一个参数。</p>
-
+<script src="https://utteranc.es/client.js" repo="Amosyue/Amosyue.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+</script>
                 
               </div>
             
