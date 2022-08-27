@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2022/08/23/settimeout/"/>
-    <url>/2022/08/23/settimeout/</url>
+    <title>markdown</title>
+    <link href="/2022/07/22/markdown/"/>
+    <url>/2022/07/22/markdown/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>语法地址：<a href="https://docs.github.com/cn/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">https://docs.github.com/cn/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax</a></p><p><a href="https://keatonlao.gitee.io/a-study-note-for-markdown/syntax/">https://keatonlao.gitee.io/a-study-note-for-markdown/syntax/</a></p><h1 id="最大标题"><a href="#最大标题" class="headerlink" title="最大标题"></a>最大标题</h1><h2 id="第二大标题"><a href="#第二大标题" class="headerlink" title="第二大标题"></a>第二大标题</h2><h6 id="最小标题"><a href="#最小标题" class="headerlink" title="最小标题"></a>最小标题</h6><p>这个是引用的格式</p><blockquote><p>Text that is a quote</p></blockquote><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">这个是应用的格式<br>&gt; Text <span class="hljs-keyword">that</span> <span class="hljs-keyword">is</span> a <span class="hljs-literal">quote</span><br><br></code></pre></td></tr></table></figure><p><font color="red">我是红色</font><br><font color="#008000">我是绿色</font></p><div bgcolor="yellow">背景是黄色</div><table><tr><td bgcolor="yellow">背景色yellow</td></tr></table><center>文字居中</center><p>####小坦克</p>]]></content>
     
     
     
@@ -17,13 +17,19 @@
   
   
   <entry>
-    <title>markdown</title>
-    <link href="/2022/07/22/markdown/"/>
-    <url>/2022/07/22/markdown/</url>
+    <title>深入setTimeout,setInterval</title>
+    <link href="/2020/03/02/settimeout/"/>
+    <url>/2020/03/02/settimeout/</url>
     
-    <content type="html"><![CDATA[<p>语法地址：<a href="https://docs.github.com/cn/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">https://docs.github.com/cn/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax</a></p><p><a href="https://keatonlao.gitee.io/a-study-note-for-markdown/syntax/">https://keatonlao.gitee.io/a-study-note-for-markdown/syntax/</a></p><h1 id="最大标题"><a href="#最大标题" class="headerlink" title="最大标题"></a>最大标题</h1><h2 id="第二大标题"><a href="#第二大标题" class="headerlink" title="第二大标题"></a>第二大标题</h2><h6 id="最小标题"><a href="#最小标题" class="headerlink" title="最小标题"></a>最小标题</h6><p>这个是引用的格式</p><blockquote><p>Text that is a quote</p></blockquote><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">这个是应用的格式<br>&gt; Text <span class="hljs-keyword">that</span> <span class="hljs-keyword">is</span> a <span class="hljs-literal">quote</span><br><br></code></pre></td></tr></table></figure><p><font color="red">我是红色</font><br><font color="#008000">我是绿色</font></p><div bgcolor="yellow">背景是黄色</div><table><tr><td bgcolor="yellow">背景色yellow</td></tr></table><center>文字居中</center><p>####小坦克</p>]]></content>
+    <content type="html"><![CDATA[]]></content>
     
     
+    
+    <tags>
+      
+      <tag>promise</tag>
+      
+    </tags>
     
   </entry>
   
