@@ -273,6 +273,13 @@
 <p>当then中传入的不是函数，则这个then返回的promise的data，将会保存上一个的promise.data。这就是发生值穿透的原因。而且每一个无效的then所返回的promise的状态都为resolved。</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">Promise<span class="hljs-selector-class">.resolve</span>(<span class="hljs-number">1</span>)<br>      <span class="hljs-selector-class">.then</span>(<span class="hljs-number">2</span>) <span class="hljs-comment">// 注意这里</span><br>      <span class="hljs-selector-class">.then</span>(Promise<span class="hljs-selector-class">.resolve</span>(<span class="hljs-number">3</span>))<br>      <span class="hljs-selector-class">.then</span>(console.log) <br>      <span class="hljs-comment">//输入1</span><br></code></pre></td></tr></table></figure>
                 
+                <script src="https://utteranc.es/client.js"
+        repo="Amosyue/Amosyue.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
               </div>
             
             <hr/>
