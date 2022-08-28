@@ -138,7 +138,7 @@ Fluid.plugins = {
         lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
       }
       $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
-        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy" style="margin-right:5px">复制</i>' : ' code-widget">')));
 
       if (enableCopy) {
         var clipboard = new ClipboardJS('.copy-btn', {

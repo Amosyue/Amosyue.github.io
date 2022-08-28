@@ -300,18 +300,12 @@
 <h2 id="8、其它"><a href="#8、其它" class="headerlink" title="8、其它"></a>8、其它</h2><p>setTimeout()、setInterval() 允许传入一个JS代码字符串并执行，然而在JS代码中执行另一段JS代码时，代码首先会以正常的方式求值，然后在执行过程中对包含于字符串中的代码发起另一个求值运算，从而造成双重求值。它比直接包含的代码执行速度慢很多，原因在于， 每次调用setTimeout()、setInterval() 都会创建一个新的解释器&#x2F;编译器实例。这必然使得代码执行速度变慢，效率降低，从而造成性能的浪费。所以建议传入函数而不是字符串来作为第一个参数。</p>
 
                 
-                <script src="https://utteranc.es/client.js"
-        repo="Amosyue/Amosyue.github.io"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+                
               </div>
             
             <hr/>
             <div>
-              <div class="post-metas my-3">
+              <!-- <div class="post-metas my-3">
   
   
     <div class="post-meta">
@@ -324,9 +318,9 @@
     </div>
   
 </div>
+ -->
 
-
-              
+              <!-- 
   
 
   <div class="license-box my-3">
@@ -367,7 +361,7 @@
     <div class="license-icon iconfont"></div>
   </div>
 
-
+ -->
 
               
                 <div class="post-prevnext my-3">
@@ -394,7 +388,13 @@
                 </div>
               
             </div>
-
+            <script src="https://utteranc.es/client.js"
+                  repo="Amosyue/Amosyue.github.io"
+                  issue-term="pathname"
+                  theme="github-light"
+                  crossorigin="anonymous"
+                  async>
+                </script>
             
   <article id="comments" lazyload>
     
