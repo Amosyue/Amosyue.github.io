@@ -217,7 +217,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2022/09/03/newFunction/" target="_self">
         <div>
-          公司有多个前端项目，每个项目独立部署，各个项目里可能会使用相同的组件或者页面。对于这样的组件或者页面如何管理呢？我们可以把公共的组件或者页面抽离，单独存放在一个项目里，然后在其他项目里引入这个公共的项目
+          一般我们不会使用用 new Function 构造函数的，因为没必要，直接使用 function 或者 箭头函数写法更简单。但并不是说new Function 构造函数无用。在一些特别的场景，比如函数体的数据格式是字符串的时候，new Function 构造函数的作用就显示出来了。之前也是仅仅知道此方法，但是没有具体的研究搞懂，但是最近一两年一直在倒腾低代码的项目，原理上来说，低代码都是一堆字符
         </div>
       </a>
 
@@ -594,6 +594,12 @@
   </div>
 
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
 
 
 
